@@ -1,0 +1,117 @@
+# install.packages(c( "gapminder", "ggforce", "gh", "globals", "openintro", "profvis", "RSQLite", "shiny", "shinycssloaders", "shinyFeedback",  "shinythemes", "testthat", "thematic", "tidyverse", "vroom", "waiter", "xml2", "zeallot" ))
+
+# TO DO:
+# Move everything to quarto in VS code
+# add reactive events to filter to only selected location
+# add in Onsemi logo title
+# add in an annotion to highlight the location
+# better looking markers on the map
+# add dropdown for different groups
+# add dropdown for differnt site functions
+# add in clickalble links to sharepoint site
+# Spice up the page more
+# fix city names, use code from colab
+library(ggrepel)
+library(shiny)
+#source("./map.R")
+
+# static map with points
+master <- ggplot(data = world) +
+  geom_sf(color = "black", fill = rgb(144, 238, 144, maxColorValue = 255)) +
+  labs(shape="Group", color = "Site Function") +
+  theme(panel.background = element_rect(fill = rgb(137, 207, 240, maxColorValue = 255)),
+        panel.grid.major = element_line(linetype = 'dashed', size = .3),
+        plot.title = element_text(hjust = 0.5), axis.title.x=element_blank(), axis.title.y=element_blank(), 
+        legend.position = "none") + 
+  scale_fill_manual(values = c('ATO' = rgb(255, 172, 28, maxColorValue = 255), 'other'=rgb(238, 75, 43, maxColorValue = 255), 
+                               'Wafer Fab Site' = rgb(34, 139, 34, maxColorValue = 255))) +
+  scale_shape_manual(values = c('ASG' = 21, 'non-ASG'= 24)) + 
+  geom_point(data = onsemi, aes(Longitude, Latitude, fill = site_type, shape=cgroup), color = outline, size = 5)
+
+#map only, no points
+junior <- ggplot(data = world) +
+  geom_sf(color = "black", fill = rgb(144, 238, 144, maxColorValue = 255)) +
+  labs(shape="Group", color = "Site Function") +
+  theme(panel.background = element_rect(fill = rgb(137, 207, 240, maxColorValue = 255)),
+        panel.grid.major = element_line(linetype = 'dashed', size = .3),
+        plot.title = element_text(hjust = 0.5), axis.title.x=element_blank(), axis.title.y=element_blank(), 
+        legend.position = "none") + 
+  scale_fill_manual(values = c('ATO' = rgb(255, 172, 28, maxColorValue = 255), 'other'=rgb(238, 75, 43, maxColorValue = 255), 
+                               'Wafer Fab Site' = rgb(34, 139, 34, maxColorValue = 255))) +
+  scale_shape_manual(values = c('ASG' = 21, 'non-ASG'= 24))
+
+outline = 'white'
+
+ui <- fluidPage(
+  titlePanel(imageOutput("logo", height = '50px')),
+  tabsetPanel(
+    tabPanel('Interactive',
+             fluidRow(
+               column(9,
+                      plotOutput("plot2", width = "900px", height = '450px')
+               ), 
+               column(2,
+                      selectInput("group2", label = "Groups", selected = 'All', choices = append(c('All'), sort(onsemi$cgroup))),
+                      selectInput("type2", label = "Site Function", selected = 'All', choices = append(c('All'), sort(onsemi$site_type))),
+                      selectInput("city2", label = "Find One Location", selected = 'All', choices = append(c('All'), sort(onsemi$city))),
+                      imageOutput("legend2")
+               )
+             )
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$plot2 <- renderPlot( 
+    if (input$city2 != 'All') {
+      junior + geom_point(data = onsemi %>% filter(city == input$city2), 
+                                   aes(Longitude, Latitude, fill = site_type, shape=cgroup), 
+                                   color = outline, size = 5) +
+        geom_label_repel(aes(Longitude, Latitude, label = paste0(city, ', ', country, '\n', site_type, '\n', cgroup)),
+                   data = onsemi %>% filter(city==input$city2))
+    } else if (input$type2 != 'All' & input$group2 == 'All' & input$city2 == 'All') {
+      junior + geom_point(data = onsemi %>% filter(site_type == input$type2), 
+                                   aes(Longitude, Latitude, fill = site_type, shape=cgroup), 
+                                   color = outline, size = 5)
+    } else if (input$group2 != 'All' & input$type2 == 'All' & input$city2 == 'All') {
+      junior + geom_point(data = onsemi %>% filter(cgroup == input$group2), 
+                                   aes(Longitude, Latitude, fill = site_type, shape=cgroup), 
+                                   color = outline, size = 5)
+    } else if (input$group2 != 'All' & input$type2 != 'All' & input$city2 == 'All') {
+      tryCatch({
+        junior + geom_point(data = onsemi %>% filter(cgroup == input$group2 & site_type == input$type2), 
+                                     aes(Longitude, Latitude, fill = site_type, shape=cgroup), 
+                                     color = outline, size = 5)
+      },error = function(e) {
+        junior
+      }
+      )
+    } else {
+      master
+    }
+    
+  )
+  
+  output$legend2 <- renderImage({
+    list(
+      src = file.path("./legend.png"),
+      contentType = "image/png",
+      width = 130,
+      height = 200
+    )
+  }, deleteFile = FALSE)
+  
+  output$logo <- renderImage({
+    list(
+      src = file.path("./worldwidelogo.png"),
+      contentType = "image/png",
+      width = 500,
+      height = 50
+    )
+  }, deleteFile = FALSE)
+  
+  
+}
+
+shinyApp(ui, server)
+

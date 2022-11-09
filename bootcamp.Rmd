@@ -1,0 +1,310 @@
+---
+title: "Onsemi R Bootcamp"
+author: "Bridger Hackworth"
+date: "2022-10-10"
+output: html_document
+---
+
+```{r setup, echo = FALSE, results='asis'}
+
+options(crayon.enabled = TRUE)
+
+old.hooks <- fansi::set_knit_hooks(knitr::knit_hooks)
+
+```
+
+## Data Science in R {.tabset .tabset-pills}
+
+Whether in Python or in R, the concepts are generally the same in Data Science programming. Once you learn them in one language, learning the other language is easy. This html file (built using RMarkdown), will cover some basic skills for a Data Scientist in R. This doesn't cover everything you will encounter, but it will provide a good foundation to begin learning on your own and learning on the job (the ultimate Data Science skill). Be sure to have your own RStudio up and running so that you can follow along and run each code on your own as you read. 
+
+### Vocabulary 
+
+**R:** Programming language used for Data Science or Statistics.
+
+**R Studio:** A popular Interactive Development Environment (IDE) for coding in R.
+
+**R Markdown:** An easy way to make reports and display your R code and its results. (This overview was made in R Markdown).
+
+**Base R:** Original elements of the R language that were made when it was created.
+
+**Tidyverse:** R library for all things data science. Many Base R functions get overwritten when this is imported or attached. 
+
+**ggplot:** R library (part of tidyverse) used for data visualization. This is usually a popular alternative to Base R plotting.
+
+**tibble:** Comes from "tidy table". This is the foundational data structure for data science programming in the tidyverse. The base R table is just referred to as a data frame. 
+
+### Some Base R Characteristics
+
+```{r}
+# This is a comment. The # symbol works the same as in Python. Any text that follows it will not be read by your compiler.
+``` 
+
+The `install.packages()` function is used to install packages on your computer. Here we are installing tidyverse. This only needs to be ran one time. Afterwards, it is good to comment it out or delete it.
+```{r eval=FALSE}
+install.packages('tidyverse')
+```
+Tidyverse has now been installed on your computer.
+
+This next command is similar to an import statement to in Python. This attaches other saved scripts, packages, or libraries that exist somewhere on your computer to the code you are currently writing.
+```{r}
+library(tidyverse)
+```
+Tidyverse has now been attached to the current script.
+
+Next is a vector that has been named `my_first_vector`.
+```{r}
+my_first_vector <- c('First', 'Second', 'Third')
+```
+
+The `c()` (combine) function is used to create a vector, the most basic data structure in R. It is similar to how a list works in most languages. A list does in fact exist in R, but with some differences from a vector that we will not address. For now, just plan to use vectors, an ordered set of elements. 
+
+**Important To Note:** Most programming languages begin their indexing at 0, while R begins at 1.
+
+The `<-` operator is similar to `=` in most languages. This stores the results of an R command (the right side) into an object with whatever name that you choose (the left side). 
+
+Your environment window in R Studio (top right corner) shows you the values of all your objects/variables without having to print them out.
+
+Square brackets are used to select elements from a vector. In the example below, the first element of a vector has been selected. When an R command is ran without an assignment operator, it automatically prints the results to your console. To use the assignment operator and also print to the console at the same time, you can surround your line(s) of code in parenthesis, as shown below. 
+
+```{r}
+(element1 <- my_first_vector[1])
+```
+
+The first element of the vector above shows up in "quotations" because it is a string type. A string is a datatype that is used to represent words and letters. To create a string, you can use 'single quotes' or "double quotes". In a tibble, or in your environment window, where the data type is showed, it will show up as a `chr` for character. Other data types are `dbl` for double (numerical with decimals) and `int` for integer (whole numbers only).
+
+### Tidyverse
+
+Most data can be read in with the tidyverse using the general format `read_filetype('filepath')`. It is better to use tidyverse functions as opposed to Base R ways of reading/loading in data. The tidyverse way will automatically load the data into a tibble and keep the data consistent and compatible with everything else in the tidyverse.
+
+```{r}
+# Here we are loading in some raw data with Onsemi locations form the western hemisphere, scraped from Google Maps
+onsemi_West <- read_csv('https://raw.githubusercontent.com/bridg3r/myclasses/main/datasets/Onsmei_Footprint_West.csv')
+```
+
+There are several ways that we can now look at this data. We can either check our environment variables, print the tibble, or use the `View()` function. In the example below, we print the table to the console by simply writing out its name. 
+
+```{r}
+onsemi_West
+```
+
+The `View()` function will open a new tab in your R Studio. This is usually the best way to manually comb through the data and get an initial feel for what it looks like.
+
+```{r eval=FALSE}
+View(onsemi_West)
+```
+
+If we are curious about just one column we can select it using the `$` operator.
+
+```{r}
+onsemi_West$Price_range
+```
+
+You can see that a vector of the column's values was returned. In this case, it is a vector of blank spaces (represented as `NA`). There is no data in this column so we should drop it using the `select()` function. Simply passing the tibble as the first parameter, followed by however many column names, will create a new tibble with just the listed columns. If we do a `-` minus sign before each column name however, we will create copy of the tibble without those columns.
+
+```{r}
+# The first parameter is the tibble that we want to alter. The second can be a vector of columns that we want to select, or in this case a negtive column name that we want to remove. 
+(onsemi_West <- select(onsemi_West, -Price_range))
+```
+Note that the assignment operator (`<-`) was used to save the results of our code, an altered copy of our original tibble. 
+
+Most of our variables (columns) are going to require some wrangling to be very useful. Let's see what we can learn form our data with just the raw `Review_Points` column by arranging our tibble with the `arrange()` function. The first parameter is our tibble name and the second it the column that we would like to order by.
+
+```{r}
+arrange(onsemi_West, Review_Points)
+```
+
+We see that 3.3 is the lowest value for review points, but we are so overwhelmed with random data that we can't even tell which location this is associated with. It would be easier to display the results by using a select function and arrange function at the same time. The `%>%` (pipe) operator allows us to do this; similar to method chaining in other languages like python.
+
+```{r}
+# whatver results form the left of the pipe symbol, will be automatically passed as the first argument in the next function
+onsemi_West %>% arrange(Review_Points) %>% select(Review_Points, Address) %>% head(5)
+```
+
+Using the `head()` function, we were able to print out only the first five rows of the tibble and see that Gresham in Oregon has the lowest reviews in our data set.
+
+Let's see which locations are above 4 stars. We will do this using the `filter()` function.
+
+```{r}
+onsemi_West %>% filter(Review_Points > 4) %>% select(Review_Points, Address) %>% arrange(-Review_Points)
+```
+
+It looks like we have a couple of locations with 5 whole stars. By now you have probably noticed that there are some duplicates in our data set. One basic concept of having tidy data is making it so each row represents one observation and to be clear on what single observation represents. In our case, each row should represent a single company location. For our data to be considered "tidy" there should be no duplicates in locations. We can use the `table()` function to see how many duplicates we have of each address. 
+
+```{r}
+table(onsemi_West$Address) %>%  pander::pander()
+```
+
+`::` is used to call in a function from another module that has not been attached to the current coding environment. `pander()` is a function that sometimes can make the results of `table()` a little bit more readable. Even in `pander()` our results in this case are long and messy. It will be much better if we put our results into another tibble. We can use the `group_by()` and `sumamrise()` functions to do this.
+
+```{r}
+onsemi_West %>% group_by(Address) %>% 
+summarise( sampleSize = n( ), 
+  Mean = mean(Review_Points), 
+  standardDeviation = sd(Review_Points))
+```
+
+`group_by()` will combine all rows that have matching values in the specified column. The `summarise()` function will tell us what data we want from those newly created groups. In this case we use `n()` to get the count of each group. We also calculated the mean and standard deviation of our `Review_Points` column for each group. We can name the columns whatever we want using the `=` operator. `NA` is shown where there was no data to work with for the calculations. The standard deviation of our groups is 0 because all of our groups are comprised of duplicates only. 
+
+One last basic tidyverse function that is really important to know is the `mutate()` function. This allows us to create new columns using the data that we already have. As an example, we can create a new column that is the sum of each location's latitude and longitude.
+
+```{r}
+# There is no reason I can think of to ever add latitude and longitude. This is just for demonstration purposes
+onsemi_West %>% mutate(lat_and_long = Latitude + Longitude) %>% select(Address, Latitude, Longitude, lat_and_long)
+```
+
+### Visualization
+
+Data Visualization can be done with Base R and with ggplot (part of the tidyverse library). Here it will be explained how to visualize data using ggplot.
+
+Most ggplots follow the same general format. As we go through different examples, the small change between graphs will be easy to notice, as well as the pattern and format.
+
+Let's look at the distribution of our `Review_Points` column.
+```{r, warning=FALSE}
+ggplot(onsemi_West, aes(Review_Points)) +
+  geom_histogram(bins= 5) +
+  labs(title = "Distribution of Review Points")
+```
+
+All ggplots begin with the `ggplot()` function. The first parameter is always the data being plotted. Next, nested inside, is always the `aes()` function. This is where different elements of the chart are attached to the different variables (columns) from our data, such as the x-axis, y-axis, or even colors and sizes. All arguments passed to the `ggplot()` function are inherited to the rest of the geom functions. In the chart above's case, the `aes()` function was inherited by `geom_histogram()`.
+
+
+Now, let's make a bar graph using our grouped table that we made earlier. For reference, we can first remember how the table looks. We will name it so that it is easy to load into our plot.
+
+```{r, warnings=FALSE}
+(grouped_onsemi <- onsemi_West %>% 
+  group_by(Address) %>% 
+  summarise(
+    sampleSize = n( ), 
+    Mean = mean(Review_Points), 
+    standardDeviation = sd(Review_Points)) %>%
+  na.omit()) # we add in this last fucntion that removes all rows that contain an NA value
+```
+
+
+```{r}
+ggplot(grouped_onsemi, aes(x = Address, y = Mean)) +
+  geom_col() +
+  labs(title = "Google Maps Review Points for U.S. Onsemi Sites")
+```
+
+While the code for this graph works, the graph itself is not very useful. The addresses are super long, making them hard to read on the x-axis. It will take some more data wrangling so that the data is really ready to be put into a presentable chart. This wrangling goes a tiny bit beyond our super basic R overview. 
+
+Here is an example of what a more presentable version of this chart might look like. Take a look at the code and see what you can understand from it.
+
+```{r}
+grouped_onsemi %>%  mutate(City = str_extract(grouped_onsemi$Address, pattern= '(?<=,)[^,]*(?=,)') %>% fct_reorder(Mean)) %>% 
+ggplot(aes(x = City, y = Mean)) +
+  geom_col(fill = 'Dark Orange') +
+  labs(title = 'Google Maps Review Points for U.S. Onsemi Sites', y = "Review Points", x = 'Site Location') +
+  theme_bw()
+```
+
+In this next example we can layer a line graph over this bar graph to compare our review mean with the sample size. This shows how we can layer multiple charts over one another. 
+
+Note that this isn't actually the sample size we go the review points from, but just how many duplicates there were in the data.
+
+
+```{r}
+grouped_onsemi %>%  mutate(City = str_extract(grouped_onsemi$Address, pattern= '(?<=,)[^,]*(?=,)') %>% fct_reorder(Mean)) %>% 
+ggplot() +
+  geom_col(aes(x = City, y = Mean), fill = 'Dark Orange') +
+  geom_line(aes(x = City, y = sampleSize, group = 7), color = 'Dark Green') +
+  geom_text(aes(x = 4, y = 22, label = 'The green line shows sample size for each site'), vjust = "top", hjust = "right") +
+  labs(title = 'Google Maps Review Points for U.S. Onsemi Sites', y = "Review Points", x = 'Site Location') +
+  theme_bw()
+```
+
+Note how this time, rather than passing the `aes()` function to `ggplot()`, it was passed individually to each geom since we wanted each `y` parameter to be attached to a different variable. 
+
+### Basic Stat Calculations With Base R
+
+Here are some basic stats calculations using base R. These functions take in vectors and then return a single value.
+
+For reference, here are the values of our vector:
+```{r}
+grouped_onsemi$sampleSize
+```
+
+
+Find the mean:
+```{r}
+mean(grouped_onsemi$sampleSize)
+```
+
+Find the median:
+```{r}
+median(grouped_onsemi$sampleSize)
+```
+
+Find the minimum:
+```{r}
+min(grouped_onsemi$sampleSize)
+```
+
+Find the maximum:
+```{r}
+max(grouped_onsemi$sampleSize)
+```
+
+Find the specified quantile:
+```{r}
+quantile(grouped_onsemi$sampleSize, .75)
+```
+
+Find the Standard Deviation:
+```{r}
+sd(grouped_onsemi$sampleSize)
+```
+
+Find the correlation coefficient between two vectors or columns:
+```{r}
+cor(grouped_onsemi$sampleSize, grouped_onsemi$Mean)
+```
+
+
+
+<!-- ### Statistical Tests with Base R -->
+
+<!-- This allows us to do an independent t-test, comparing two different populations, if they are statistically different. -->
+
+<!-- t.test(NameOfYourData$Y, mu = YourNull, alternative = YourAlternative, conf.level = 0.95) -->
+
+<!-- mylm <- lm(Y ~ X, data = NameOfYourDataset) -->
+<!-- summary(mylm) -->
+
+<!-- plot(Y ~ X, data=YourDataSet) -->
+<!-- abline(mylm) -->
+
+<!-- YourGlmName <- glm(Y ~ X, data = NameOfYourDataset, -->
+<!--  family=binomial) -->
+<!-- summary(YourGlmName) -->
+
+<!-- plot(Y ~ X, data=YourDataSet) -->
+<!-- curve(exp(b0 + b1*x)/(1 + exp(b0 + b1*x)), add = TRUE) -->
+
+
+
+<!-- ### Intermediate Tidyverse -->
+
+<!-- Joins -->
+
+<!-- pivots -->
+
+<!-- missing values -->
+
+<!-- basic strings -->
+
+<!-- baisc lubridate -->
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+
+# load the `txhousing` dataset
+data(txhousing, package = "ggplot2")
+
+# declare `city` as the SQL 'query by' column
+tx <- highlight_key(txhousing, ~city)
+
+# initiate a plotly object
+base <- plot_ly(tx, color = I("black")) %>% 
+  group_by(city)
+
+# create a time series of median house price
+base %>%
+  group_by(city) %>%
+  add_lines(x = ~date, y = ~median) %>% 
+  highlight(
+    on = "plotly_click", 
+    selectize = TRUE, 
+    dynamic = TRUE, 
+    persistent = TRUE
+  )
+
+on <- highlight_key(onsemi, ~city)
+
+drop <- ggplot(data = onsemi) +
+  geom_sf(data = world, color = "black", fill = rgb(144, 238, 144, maxColorValue = 255)) +
+  geom_point(data = onsemi, aes(Longitude, Latitude, color = site_type, shape=cgroup, text = paste0(city, ', ', country, '\n', site_type, '\n', cgroup)), fill = 'black', size = 3) +
+  theme(panel.background = element_rect(fill = rgb(137, 207, 240, maxColorValue = 255), size = 0.5, linetype = "solid"),
+        panel.grid.major = element_blank() )+ 
+  scale_color_manual(values = c(rgb(255, 172, 28, maxColorValue = 255), rgb(238, 75, 43, maxColorValue = 255), rgb(34, 139, 34, maxColorValue = 255)))
+
+dropmaster <- ggplotly(drop, tooltip = "text" )
+
+dropmaster %>%
+  group_by(city) %>%
+  highlight(
+    on = "plotly_click", 
+    selectize = TRUE, 
+    dynamic = TRUE, 
+    persistent = TRUE
+  )
+
+
+
