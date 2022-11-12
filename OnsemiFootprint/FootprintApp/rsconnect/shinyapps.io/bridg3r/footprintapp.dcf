@@ -5,7 +5,9 @@ account: bridg3r
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7590781
-bundleId: 6499907
+bundleId: 6505084
 url: https://bridg3r.shinyapps.io/footprintapp/
-when: 1668109649.17013
-lastSyncTime: 1668109649.17014
+when: 1668224316.58173
+lastSyncTime: 1668224316.58175
+asMultiple: FALSE
+asStatic: FALSE

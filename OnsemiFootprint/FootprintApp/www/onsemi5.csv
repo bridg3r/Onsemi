@@ -1,0 +1,59 @@
+Longitude,Latitude,Number_of_reviews,Review_Points,Address,city,country,site_type,cgroup,Advanced Solutions Group,Power Solutions Group,Intelligent Solutions Group,link
+-112.4146227,42.866385,6 reviews,4.3,"2300 W Buckskin Rd, Pocatello, ID 83201",Pocatello,United States,Wafer Fab Site,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-man-pocatello
+-98.675974,29.471608,NA,NA,"640 Avis Dr #300, Ann Arbor, MI 48108",Ann Arbor,United States,other,non-ASG,0,0,0,NA
+-122.4266357,45.5247688,7 reviews,3.3,"23400 NE Glisan St, Gresham, OR 97030",Gresham,United States,Wafer Fab Site,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-gresham
+-123.2988568,44.5507526,NA,NA,"4238 SW Research Way, Corvallis, OR 97333",Corvallis,United States,other,non-ASG,0,0,0,NA
+-111.9715314,33.4642769,22 reviews,4.2,"5005 E McDowell Rd, Phoenix, AZ 85008",Phoenix,United States,other,non-ASG,0,0,0,NA
+-116.5344342,43.59652,3 reviews,3.7,"1401 N Kings Rd, Nampa, ID 83687",Nampa,United States,Wafer Fab Site,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-Nampa
+-121.8826202,37.3894678,NA,NA,"1704 Automation Pkwy, San Jose, CA 95131",San Jose,United States,other,non-ASG,0,0,0,NA
+-96.7114145,32.9819565,NA,NA,"2400 Lakeside Blvd #700, Richardson, TX 75082",Richardson,United States,other,non-ASG,0,0,0,NA
+-121.9697341,37.3772773,11 reviews,4,"3001 Stender Way, Santa Clara, CA 95054",Santa Clara,United States,other,non-ASG,0,0,0,NA
+-121.9218348,37.3912345,3 reviews,5,"455 E Trimble Rd, San Jose, CA 95131",San Jose,United States,other,non-ASG,0,0,0,NA
+-112.4124527,42.865695,3 reviews,5,"1777 Alvin Ricken Dr, Pocatello, ID 83201",Pocatello,United States,Wafer Fab Site,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-man-pocatello
+-116.3529618,43.5893145,NA,NA,"3405 E Overland Rd STE 245, Meridian, ID 83642",Meridian,United States,other,non-ASG,0,0,0,NA
+-111.7304205,40.3310027,2 reviews,5,"588 W 400 S St, Lindon, UT 84042",Lindon,United States,other,non-ASG,0,0,0,NA
+-75.893996,41.1430202,5 reviews,4.2,"125 Crestwood Rd, Mountain Top, PA 18707",Mountain Top,United States,Wafer Fab Site,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-MountainTop
+-83.4292204,42.3807431,NA,NA,"39201 Schoolcraft St, Livonia, MI 48150",Livonia,United States,other,non-ASG,0,0,0,NA
+-105.1538102,40.1518255,NA,NA,"600 S Airport Rd, Longmont, CO 80503",Longmont,United States,other,non-ASG,0,0,0,NA
+-71.494430500000007,41.6447105,3 reviews,4,"1900 S County Trail, East Greenwich, RI 02818",East Greenwich,United States,other,non-ASG,0,0,0,NA
+-97.8717329,30.2535777,NA,NA,"7500 Rialto Boulevard Building 2, #145, Austin, TX 78735",Austin,United States,other,non-ASG,0,0,0,NA
+-120.2250802,38.0386675,NA,NA,"22960 Vantage Point Dr A, Twain Harte, CA 95383",Twain Harte,United States,other,non-ASG,0,0,0,NA
+-70.3257132,43.6405376,1 review,5,"333 Western Ave, South Portland, ME 04106",South Portland,United States,other,non-ASG,0,0,0,NA
+-75.2243268,40.1784373,NA,NA,"768 N Bethlehem Pike # 301, Lower Gwynedd Township, PA 19002",Lower Gwynedd Township,United States,other,non-ASG,0,0,0,NA
+-86.0973968,40.4524172,1 review,5,"2529 Commerce Dr, Kokomo, IN 46902",Kokomo,United States,other,non-ASG,0,0,0,NA
+-70.342487,43.6362401,3 reviews,3.7,"82 Running Hill Rd, South Portland, ME 04106",South Portland,United States,other,non-ASG,0,0,0,NA
+-122.7882763,45.4531943,2 reviews,4.5,"9200 SW Nimbus Ave, Beaverton, OR 97008",Beaverton,United States,other,non-ASG,0,0,0,NA
+2.2159663,48.7826778,NA,NA,"6 Rue Dewoitine, 78140 Vélizy-Villacoublay, France",Vélizy-Villacoublay,France,other,non-ASG,0,0,0,NA
+18.1230266,49.4623257,7 reviews,4,"1. máje 2634, 756 61 Rožnov pod Radhoštěm, Czechia",Rožnov,Czechia,Wafer Fab Site,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-CZ4
+11.6868691,48.1479775,5 reviews,4.4,"Einsteinring 28, 85609 Aschheim, Germany",Aschheim,Germany,other,non-ASG,0,0,0,NA
+1.3868364,43.5626529,1 review,4,"132 Chem. de Basso Cambo, 31100 Toulouse, France",Toulouse,France,other,non-ASG,0,0,0,NA
+17.947162,59.4054981,NA,NA,"Isafjordsgatan 32 C, 6tr, 164 40 Kista, Sweden",Kista,Sweden,other,non-ASG,0,0,0,NA
+-3.8361506,40.3597447,NA,NA,"Av. de América, 32, 28922 Alcorcón, Madrid, Spain",Madrid,Spain,other,non-ASG,0,0,0,NA
+6.999358,47.011944,1 review,5,"Av. des Champs-Montants 12A, 2074 Marin-Epagnier, Switzerland",Marin-Epagnier,Switzerland,other,non-ASG,0,0,0,NA
+9.3399891,45.511813,NA,NA,"Via Brescia, 26, 20063 Cernusco sul Naviglio MI, Italy",Cernusco sul Naviglio,Italy,other,non-ASG,0,0,0,NA
+-0.7397083,51.4156527,1 review,5,"2nd Floor, Greenwood House, London Rd, Bracknell RG12 2AA, United Kingdom",Bracknell,United Kingdom,other,non-ASG,0,0,0,NA
+-8.6624445,52.6173962,5 reviews,5,"The Loughmore Centre, Loughmore Avenue, Raheen Business Park, Limerick, Ireland",Limerick,Ireland,other,non-ASG,0,0,0,NA
+26.0501925,44.4348456,23 reviews,4.9,"Bulevardul Iuliu Maniu 6Q, București 061103, Romania",București,Romania,other,non-ASG,0,0,0,NA
+17.7980346,48.5918197,30 reviews,4.2,"Vrbovská cesta 2617/102, 921 01 Piešťany, Slovakia",Piešťany,Slovakia,other,non-ASG,0,0,0,NA
+121.068626,14.327723,34 reviews,4.3,"83H9+3FJ, Governor's Dr, Maduya, Carmona, 4116 Cavite, Philippines",Carmona,Philippines,ATO,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-ospi
+123.9820719,10.327829,79 reviews,4.6,"8XHJ+4RP, MEPZ1 1st Ave Rd, MEPZ 1, Lapu-Lapu City, Cebu, Philippines",Cebu,Philippines,ATO,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-Cebu
+101.989885,2.6847892,26 reviews,4.3,"Lorong Senawang 2/4, Kawasan Perusahaan Senawang, 70450 Seremban, Negeri Sembilan, Malaysia",Seremban,Malaysia,ATO,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-ismffab
+106.7123936,10.9381011,26 reviews,4.5,"No 30 VSIP Street 3, Thuận Giao, Thuận An, Bình Dương, Vietnam",Bình Dương,Vietnam,ATO,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-vn-osbd
+120.607084,15.4494662,10 reviews,3.9,"CJX4+QRP, Tarlac City, Tarlac, Philippines",Tarlac City,Philippines,ATO,ASG,1,0,0,NA
+100.2971379,5.331519,2 reviews,2,"B-04-25, Krystal Point, 303, Jalan Sultan Azlan Shah, Krystal Point Corporate Park, 11900 Bayan Lepas, Pulau Pinang, Malaysia",Bayan Lepas,Malaysia,other,non-ASG,0,0,0,NA
+121.0317065,14.3092452,NA,NA,"4116 Governor's Dr, Maduya, Carmona, Cavite, Philippines",Carmona,Philippines,ATO,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-ospi
+121.0365808,14.4190737,NA,NA,"2 Commerce Ave, Alabang, Muntinlupa, Metro Manila, Philippines",Muntinlupa,Philippines,other,non-ASG,0,0,0,NA
+101.9825247,2.6886058,20 reviews,4.5,"Kawasan Perusahaan Senawang, 70450 Seremban, Negeri Sembilan, Malaysia",Seremban,Malaysia,ATO,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-ismffab
+101.9810758,2.6884735,3 reviews,4.3,"Lorong Senawang 2/2, Kawasan Perusahaan Senawang, 70450 Senawang, Negeri Sembilan, Malaysia",Senawang,Malaysia,other,non-ASG,0,0,0,NA
+126.7859855,37.5128792,5 reviews,3.8,"55 Pyeongcheon-ro 850beon-gil, Dodang-dong, Wonmi-gu, Bucheon-si, Gyeonggi-do, South Korea",Bucheon,NA,Wafer Fab Site,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-bucheon
+101.617275,3.146534,NA,NA,"Lot 1.02 Level One, KPMG Tower, 8, First Ave, Bandar Utama, 47800 Petaling Jaya, Selangor, Malaysia",Petaling Jaya,Malaysia,other,non-ASG,0,0,0,NA
+114.2131369,22.4252954,4 reviews,5,"Hong Kong, Science Park, Science Park E Ave, 1號HK New Territories 香港新界沙田2樓",Hong Kong,Hong Kong,other,non-ASG,0,0,0,NA
+120.6019211,15.4462249,NA,NA,"CJW2+FQM, Tarlac City, Tarlac, Philippines",Tarlac City,Philippines,ATO,ASG,1,0,0,NA
+106.7154819,10.9314029,NA,NA,"Số 30 Số 3, Thuận Giao, Thuận An, Bình Dương, Vietnam",Bình Dương,Vietnam,ATO,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-vn-osbd
+106.6126996,10.7443497,NA,NA,"Số 10 Đường Số 17A, Bình Trị Đông B, Bình Tân, Thành phố Hồ Chí Minh, Vietnam",Ho Chi Minh City,Vietnam,other,non-ASG,0,0,0,NA
+120.6037336,15.4391078,NA,NA,"CJQ3+JFX, Tarlac City, Tarlac, Philippines",Tarlac City,Philippines,ATO,ASG,1,0,0,NA
+101.9879169,2.6846617,1 review,5,"Kawasan Perusahaan Senawang, 70450 Senawang, Negeri Sembilan, Malaysia",Senawang,Malaysia,other,non-ASG,0,0,0,NA
+106.8599478,10.9112332,NA,NA,"Số 02 Đ. 3A, Long Bình Tân, Thành phố Biên Hòa, Đồng Nai, Vietnam",Biên Hòa,Vietnam,other,non-ASG,0,0,0,NA
+106.7658397,10.8948076,NA,NA,"Số 30 Đ. Số 3, Dĩ An, Bình Dương, Vietnam",Bình Dương,Vietnam,ATO,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-vn-osbd
+139.909926,37.468432,8 reviews,2.1,"6 Mondenmachi Kogyodanchi, Aizuwakamatsu, Fukushima 965-0845, Japan",Aizu,Japan,Wafer Fab Site,ASG,1,0,0,https://onsemi.sharepoint.com/sites/mfg-AFSM/SitePages/Home.aspx
+103.732388,1.310555,NA,NA,"34 Penjuru Ln, Singapore 609201",Singapore,Singapore,other,non-ASG,0,0,0,NA
